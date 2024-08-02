@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.4...3.18)
 project(cmake_example)
 
+set (CMAKE_CXX_STANDARD 20)
+
 add_subdirectory(pybind11)
 pybind11_add_module(cmake_example src/main.cpp)
 
@@ -8,3 +10,4 @@ pybind11_add_module(cmake_example src/main.cpp)
 # define (VERSION_INFO) here.
 target_compile_definitions(cmake_example
                            PRIVATE VERSION_INFO=${EXAMPLE_VERSION_INFO})
+target_include_directories(cmake_example PUBLIC src/eigen-3.4.0)
