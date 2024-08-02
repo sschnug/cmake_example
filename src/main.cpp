@@ -103,14 +103,6 @@ PYBIND11_MODULE(cmake_example, m) {
     m.def("take_matrix", &take_matrix<bool>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
     m.def("take_matrix", &take_matrix<float>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
     m.def("take_matrix", &take_matrix<double>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<int8_t>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<int16_t>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<int32_t>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<int64_t>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<uint8_t>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<uint16_t>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<uint32_t>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<uint64_t>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
 
     // sparse
     // ------
@@ -123,30 +115,6 @@ PYBIND11_MODULE(cmake_example, m) {
 
     m.def("take_matrix", &take_matrix<double, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
     m.def("take_matrix", &take_matrix<double, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-
-    m.def("take_matrix", &take_matrix<int8_t, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<int8_t, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-
-    m.def("take_matrix", &take_matrix<int16_t, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<int16_t, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-
-    m.def("take_matrix", &take_matrix<int32_t, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<int32_t, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-
-    m.def("take_matrix", &take_matrix<int64_t, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<int64_t, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-
-    m.def("take_matrix", &take_matrix<uint8_t, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<uint8_t, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-
-    m.def("take_matrix", &take_matrix<uint16_t, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<uint16_t, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-
-    m.def("take_matrix", &take_matrix<uint32_t, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<uint32_t, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-
-    m.def("take_matrix", &take_matrix<uint64_t, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<uint64_t, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
