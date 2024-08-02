@@ -11,7 +11,7 @@
 
 // OKAY BEHAVIOUR -> dense
 template <typename ScalarT>
-static void take_matrix(const Eigen::Array<ScalarT, Eigen::Dynamic, Eigen::Dynamic> matrix_in, int a) {
+static void take_matrix(const Eigen::Array<ScalarT, Eigen::Dynamic, Eigen::Dynamic> matrix_in) {
   std::cout << "Dense overload" << std::endl;
 
   if constexpr(std::is_same_v<ScalarT, float>) {
@@ -53,7 +53,7 @@ static void take_matrix(const Eigen::Array<ScalarT, Eigen::Dynamic, Eigen::Dynam
 
 // NOT OKAY BEHAVIOUR -> sparse
 template<typename ScalarT, int Options>
-static void take_matrix(const Eigen::SparseMatrix<ScalarT, Options> matrix_in, int a) {
+static void take_matrix(const Eigen::SparseMatrix<ScalarT, Options> matrix_in) {
   std::cout << "Sparse overload" << std::endl;
 
   if constexpr(std::is_same_v<ScalarT, float>) {
@@ -100,21 +100,21 @@ PYBIND11_MODULE(cmake_example, m) {
     // dense
     // -----
 
-    m.def("take_matrix", &take_matrix<bool>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<float>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<double>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
+    m.def("take_matrix", &take_matrix<bool>, pybind11::arg("matrix_in").noconvert());
+    m.def("take_matrix", &take_matrix<float>, pybind11::arg("matrix_in").noconvert());
+    m.def("take_matrix", &take_matrix<double>, pybind11::arg("matrix_in").noconvert());
 
     // sparse
     // ------
 
-    m.def("take_matrix", &take_matrix<bool, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<bool, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
+    m.def("take_matrix", &take_matrix<bool, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert());
+    m.def("take_matrix", &take_matrix<bool, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert());
 
-    m.def("take_matrix", &take_matrix<float, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<float, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
+    m.def("take_matrix", &take_matrix<float, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert());
+    m.def("take_matrix", &take_matrix<float, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert());
 
-    m.def("take_matrix", &take_matrix<double, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
-    m.def("take_matrix", &take_matrix<double, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert(), pybind11::arg("x"));
+    m.def("take_matrix", &take_matrix<double, Eigen::ColMajor>, pybind11::arg("matrix_in").noconvert());
+    m.def("take_matrix", &take_matrix<double, Eigen::RowMajor>, pybind11::arg("matrix_in").noconvert());
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);

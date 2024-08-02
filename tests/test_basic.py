@@ -27,6 +27,6 @@ def test_main():
     # -----
 
     print('CALL instantiation -> with dense => c++ receives type?')
-    m.take_matrix(matrix, True)
+    m.take_matrix(matrix)
     print('CALL instantiation -> with sparse => c++ receives type?')
-    m.take_matrix(sparse_matrix, True)
+    m.take_matrix(sparse_matrix)
